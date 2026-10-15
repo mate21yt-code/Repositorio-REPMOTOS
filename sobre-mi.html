@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mí - REP MOTOS</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#000000',
+                        cardBg: '#131b2e',
+                        accentRed: '#ef4444',
+                        accentYellow: '#f59e0b'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-black text-slate-100 min-h-screen flex flex-col justify-between font-sans">
+
+    <!-- Header / Barra de Navegación -->
+    <header class="sticky top-0 z-40 bg-darkBg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo (Izquierda) -->
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center group">
+                    <div class="p-1 group-hover:scale-105 transition-transform">
+                        <img src="img/REPMOTOS.png" alt="REP MOTOS Logo" class="h-16 w-auto object-contain">
+                    </div>
+                </a>
+            </div>
+            
+            <!-- Menú: Volver al inicio (Empujado a la derecha) -->
+            <nav class="flex items-center gap-6">
+                <a href="index.html#inicio" class="text-accentYellow hover:text-yellow-400 transition-colors text-sm font-bold flex items-center gap-1.5">
+                    <i class="fa-solid fa-arrow-left"></i> Volver al inicio
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido: Sección Sobre Mí -->
+    <main class="flex-grow flex items-center justify-center px-6 py-16">
+        <div class="max-w-3xl w-full bg-cardBg border border-slate-800 p-8 sm:p-12 rounded-3xl shadow-2xl text-center space-y-8 relative overflow-hidden">
+            
+            <div class="inline-block bg-amber-500/10 border border-amber-500/20 text-accentYellow text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                Especialista Confiable
+            </div>
+
+            <div class="space-y-4">
+                <h1 class="text-4xl sm:text-5xl font-black text-white tracking-tight">Hola, soy Darío Ochoa</h1>
+                <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+                    Apasionado por el mundo de las motos. Me dedico a seleccionar personalmente cada repuesto y componente de nuestro catálogo, asegurando que cumplan con los más altos estándares de durabilidad y compatibilidad para que tu moto rinda al máximo sin preocupaciones.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 text-left">
+                <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl flex items-start gap-4">
+                    <div class="bg-red-500/10 text-accentRed p-3 rounded-xl">
+                        <i class="fa-solid fa-shield-halved text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">Calidad Garantizada</h4>
+                        <p class="text-xs text-slate-400 mt-1">Repuestos originales y alternativos seleccionados rigurosamente.</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900/60 border border-slate-800 p-5 rounded-2xl flex items-start gap-4">
+                    <div class="bg-amber-500/10 text-accentYellow p-3 rounded-xl">
+                        <i class="fa-solid fa-handshake text-lg"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white text-sm">Atención Directa</h4>
+                        <p class="text-xs text-slate-400 mt-1">Asesoramiento personalizado sin intermediarios desde Jesús María.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4">
+                <a href="index.html#catalogo" class="inline-flex items-center justify-center gap-2 bg-accentRed hover:bg-red-600 text-white font-bold py-3.5 px-8 rounded-xl transition-colors text-sm shadow-lg shadow-accentRed/20">
+                    <i class="fa-solid fa-motorcycle"></i> Ver Catálogo de Repuestos
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Simple -->
+    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500">
+        © 2026 REP MOTOS - Jesús María, Córdoba. Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>

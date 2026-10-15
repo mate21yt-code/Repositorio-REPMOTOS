@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REP MOTOS - Catálogo y Stock</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Vinculación del CSS externo limpio -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- FontAwesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Configuración personalizada de colores para Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#000000',
+                        cardBg: '#111827',
+                        accentRed: '#ef4444',
+                        accentYellow: '#f59e0b',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- METADATOS OPEN GRAPH (OG TAGS PARA COMPARTIR EN REDES / WHATSAPP) -->
+    <meta property="og:title" content="REP MOTOS - Catálogo y Stock de Repuestos" id="og-title" />
+    <meta property="og:description" content="Encontrá componentes de motor, transmisión, frenos y electricidad para tu moto con calidad garantizada y atención directa." id="og-description" />
+    <meta property="og:image" content="https://ochoamotos.com/img/REPMOTOS.png" id="og-image" />
+    <meta property="og:url" content="https://ochoamotos.com" id="og-url" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="REP MOTOS" />
+
+    <!-- Twitter Card (Opcional pero recomendado) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="REP MOTOS - Catálogo y Stock" id="twitter-title">
+    <meta name="twitter:description" content="Encontrá el repuesto ideal para potenciar tu moto." id="twitter-desc">
+    <meta name="twitter:image" content="https://ochoamotos.com/img/REPMOTOS.png" id="twitter-image">
+
+</head>
+<body class="bg-black text-slate-100 min-h-screen font-sans antialiased selection:bg-accentRed selection:text-white">
+
+    <!-- Header / Barra de Navegación -->
+    <header class="sticky top-0 z-40 bg-darkBg/80 backdrop-blur-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Columna Izquierda: Logo  -->
+            <div class="flex-1 flex items-center justify-start gap-4">
+                <div ondblclick="abrirModalAdmin()" class="flex items-center cursor-pointer select-none group" title="Hacé doble clic para ingresar como administrador">
+                    <div class="p-1 group-hover:scale-105 transition-transform">
+                        <img src="img/REPMOTOS.png" alt="REP MOTOS Logo" class="h-16 w-auto object-contain">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Columna Central: Menú -->
+            <nav class="hidden md:flex flex-1 items-center justify-center gap-8 text-base font-bold text-slate-200">
+                <a href="#inicio" class="hover:text-accentYellow transition-colors">Inicio</a>
+                
+                <!-- Botón "Catálogo" que aparece únicamente en la sección Contacto -->
+                <a href="#catalogo" id="nav-catalogo-contacto" class="hidden text-accentYellow hover:text-yellow-400 transition-colors flex items-center gap-1.5 animate-pulse">
+                    <i class="fa-solid fa-box-open"></i> Catálogo
+                </a>
+
+                <a href="sobre-mi.html" class="hover:text-accentYellow transition-colors">Sobre Mí</a>
+            </nav>
+            
+            <!-- Columna Derecha: Estado Admin -->
+            <div class="flex-1 flex items-center justify-end">
+                <div id="auth-container" class="flex items-center gap-3">
+                    <!-- Se llena dinámicamente al iniciar sesión como admin -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-16">
+        
+        <!-- SECCIÓN: INICIO -->
+        <section id="inicio" class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] px-4 sm:px-6 lg:px-8 py-28 text-center space-y-6 scroll-mt-24 overflow-hidden my-0">
+            <div class="absolute inset-0 bg-cover bg-center filter blur-[3px] scale-105 z-0" style="background-image: url('img/Fondo.jfif');"></div>
+
+            <div class="relative z-20 max-w-4xl mx-auto space-y-6">
+                <div class="inline-flex items-center gap-2 bg-accentRed/10 border border-accentRed/30 text-accentRed text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider mx-auto">
+                    <i class="fa-solid fa-gears"></i> Especialistas en Repuestos y Accesorios
+                </div>
+                <h2 class="text-4xl sm:text-6xl font-black text-white tracking-tight leading-tight drop-shadow-lg">
+                    Encontrá el repuesto ideal para <span class="text-accentYellow">potenciar tu moto</span>
+                </h2>
+                <p class="text-slate-200 text-base sm:text-lg max-w-2xl mx-auto bg-darkBg/60 backdrop-blur-sm px-4 py-2 rounded-xl shadow-lg border border-slate-800/50">
+                   Componentes de motor, transmisión, frenos y electricidad seleccionados con calidad garantizada. Atención directa y asesoramiento sin vueltas.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 pt-2">
+                    <a href="#catalogo" class="bg-accentRed hover:bg-red-600 text-accentYellow font-bold px-8 py-4 rounded-2xl transition-colors shadow-lg shadow-accentRed/30 flex items-center gap-2 text-sm">
+                        <i class="fa-solid fa-box-open"></i> Ver Catálogo de Repuestos
+                    </a>
+                    <a href="#contacto" class="bg-cardBg/90 hover:bg-slate-800 border border-slate-700 text-white font-bold px-8 py-4 rounded-2xl transition-colors flex items-center gap-2 text-sm shadow-md">
+                        <i class="fa-solid fa-headset text-accentYellow"></i> Contactar con Asesor
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CATÁLOGO Y BUSCADOR -->
+        <section id="catalogo" class="scroll-mt-24 space-y-8">
+            
+            <!-- Barra de Búsqueda, Filtros y Ordenamiento -->
+            <div class="max-w-6xl mx-auto flex flex-col gap-4 bg-cardBg p-4 sm:p-6 rounded-2xl border border-slate-800 shadow-xl">
+                <div class="flex flex-wrap items-center gap-4 justify-between">
+                    
+                    <!-- Input de Búsqueda -->
+                    <div class="relative flex-grow min-w-[280px] lg:min-w-[350px]">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="input-buscar" placeholder="Buscar por nombre, modelo o categoría..." oninput="filtrarRepuestos()" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-11 pr-4 py-3 text-white focus:outline-none focus:border-accentRed text-sm">
+                    </div>
+                    
+                    <!-- Grupo de Filtros Juntos (Orden, Precios y Botón Admin) -->
+                    <div class="flex items-center gap-3 flex-wrap">
+                        <!-- Selector de Ordenamiento -->
+                        <div>
+                            <select id="select-orden" onchange="filtrarRepuestos()" class="bg-slate-900 border border-slate-700 text-slate-300 text-xs font-semibold px-4 py-3 rounded-xl focus:outline-none focus:border-accentRed cursor-pointer">
+                                <option value="recientes">Más recientes</option>
+                                <option value="precio-asc">Menor precio</option>
+                                <option value="precio-desc">Mayor precio</option>
+                            </select>
+                        </div>
+
+                        <!-- Filtro por Rango de Precios Juntos y Centrados -->
+                        <div class="flex items-center gap-2">
+                            <input type="number" id="precio-min" placeholder="Mín $" oninput="filtrarRepuestos()" class="w-24 bg-slate-900 border border-slate-700 rounded-xl px-2 py-3 text-xs text-white text-center focus:outline-none focus:border-accentRed placeholder:text-center">
+                            <span class="text-slate-500 font-bold">-</span>
+                            <input type="number" id="precio-max" placeholder="Máx $" oninput="filtrarRepuestos()" class="w-24 bg-slate-900 border border-slate-700 rounded-xl px-2 py-3 text-xs text-white text-center focus:outline-none focus:border-accentRed placeholder:text-center">
+                        </div>
+
+                        <!-- Botón Administrador (Integrado) -->
+                        <div id="admin-actions-bar" class="hidden">
+                            <button onclick="abrirModalAgregar()" class="bg-accentRed hover:bg-red-600 text-white px-4 py-3 rounded-xl text-xs font-bold transition-colors flex items-center gap-2 shadow-lg shadow-accentRed/20 whitespace-nowrap">
+                                <i class="fa-solid fa-plus"></i> Nuevo Repuesto
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de Filtro por Categoría -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-1 pt-2 scrollbar-none border-t border-slate-800/60 justify-start sm:justify-center">
+                    <button onclick="filtrarPorCategoria('Todos')" class="cat-btn bg-accentRed text-white px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors shadow">Todos</button>
+                    <button onclick="filtrarPorCategoria('Motor')" class="cat-btn bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors">Motor</button>
+                    <button onclick="filtrarPorCategoria('Tren Delantero')" class="cat-btn bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors">Tren Delantero</button>
+                    <button onclick="filtrarPorCategoria('Tren Trasero')" class="cat-btn bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors">Tren Trasero</button>
+                    <button onclick="filtrarPorCategoria('Transmisión')" class="cat-btn bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors">Transmisión</button>
+                    <button onclick="filtrarPorCategoria('Frenos')" class="cat-btn bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors">Frenos</button>
+                    <button onclick="filtrarPorCategoria('Electricidad')" class="cat-btn bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors">Electricidad</button>
+                    <button onclick="filtrarPorCategoria('Plásticos y Carenados')" class="cat-btn bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors">Plásticos y Carenados</button>
+                </div>
+            </div>
+
+            <!-- PANEL DE ALERTA DE STOCK (Solo Administrador) -->
+            <div id="admin-stock-alert" class="max-w-6xl mx-auto hidden bg-cardBg border border-amber-500/30 p-4 rounded-2xl flex items-center justify-between shadow-lg">
+                <div class="flex items-center gap-3">
+                    <div class="bg-amber-500/20 text-amber-400 p-2.5 rounded-xl border border-amber-500/30">
+                        <i class="fa-solid fa-triangle-exclamation text-sm"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-white text-xs font-bold uppercase tracking-wide">Control de Inventario</h4>
+                        <p id="stock-alert-text" class="text-slate-400 text-xs">Analizando stock de productos...</p>
+                    </div>
+                </div>
+                <button id="btn-stock-toggle" onclick="toggleFiltroStockCritico()" class="bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 px-4 py-2 rounded-xl text-xs font-semibold transition-colors">
+                    Ver críticos
+                </button>
+            </div>
+
+            <!-- Grilla de Repuestos -->
+            <div id="grid-repuestos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Aquí se cargan dinámicamente -->
+            </div>
+
+            <!-- CONTROLES DE PAGINACIÓN -->
+            <div id="paginacion-container" class="flex items-center justify-center gap-4 mt-8 hidden">
+                <button onclick="cambiarPagina(-1)" id="btn-Anterior" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                    <i class="fa-solid fa-chevron-left"></i> Anterior
+                </button>
+                <span id="pagina-indicador" class="text-white text-xs font-bold">Página 1 de 1</span>
+                <button onclick="cambiarPagina(1)" id="btn-Siguiente" class="bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-700 px-4 py-2 rounded-xl text-xs font-semibold transition-colors flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed">
+                    Siguiente <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+        </section>
+
+        <!-- SECCIÓN: CONTACTO -->
+        <section id="contacto" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 pt-4">
+            <div class="bg-cardBg border border-slate-800 p-6 sm:p-10 rounded-3xl shadow-xl">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">¿Tenés alguna duda sobre un repuesto o querés consultar disponibilidad?</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm">Escribíme por cualquiera de los siguientes medios o completá el formulario.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Datos de Contacto (Izquierda) -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center gap-4">
+                            <div class="w-12 h-12 bg-amber-500/10 text-accentYellow rounded-xl flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-user"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Asesor / Propietario</span>
+                                <h4 class="text-white font-bold text-base">Darío Ochoa</h4>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center gap-4">
+                            <div class="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center text-xl">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Teléfono / WhatsApp</span>
+                                <a href="https://wa.me/5493525634781" target="_blank" class="text-white font-bold text-sm sm:text-base hover:text-emerald-400 transition-colors">+54 9 3525-634781</a>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-900 border border-slate-800 p-4 rounded-2xl flex items-center gap-4">
+                            <div class="w-12 h-12 bg-accentRed/10 text-accentRed rounded-xl flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Correo Electrónico</span>
+                                <span class="text-white font-bold text-xs sm:text-sm">contacto@ochoamotos.com</span>
+                            </div>
+                        </div>
+
+                        <!-- TARJETA: UBICACIÓN / GOOGLE MAPS -->
+                        <a href="https://www.google.com/maps/search/?api=1&query=-30.981911,-64.088371" target="_blank" class="bg-slate-900 hover:bg-slate-800/80 border border-slate-800 hover:border-slate-700 p-4 rounded-2xl flex items-center gap-4 transition-all group block">
+                            <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center text-xl group-hover:scale-105 transition-transform">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">Encontranos en el local</span>
+                                <h4 class="text-white font-bold text-sm sm:text-base group-hover:text-accentYellow transition-colors">C. J Alberdi, Jesús María</h4>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Formulario de Consulta (Derecha) -->
+                    <div class="lg:col-span-7 bg-slate-900 border border-slate-800 p-6 sm:p-8 rounded-2xl">
+                        <form onsubmit="enviarConsultaWeb(event)" class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 uppercase mb-1.5">Nombre completo</label>
+                                <input type="text" id="consulta-nombre" required placeholder="Ej. Juan Pérez" class="w-full bg-darkBg border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentRed text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 uppercase mb-1.5">Correo electrónico</label>
+                                <input type="email" id="consulta-email" required placeholder="correo@gmail.com" class="w-full bg-darkBg border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentRed text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-400 uppercase mb-1.5">Repuesto de interés / Consulta</label>
+                                <textarea id="consulta-mensaje" rows="3" required placeholder="Hola, me interesa el repuesto..." class="w-full bg-darkBg border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentRed text-sm"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-accentRed hover:bg-red-600 text-accentYellow font-bold py-3.5 px-4 rounded-xl transition-colors text-sm flex items-center justify-center gap-2 shadow-lg shadow-accentRed/20">
+                                <i class="fa-solid fa-paper-plane text-xs"></i> Enviar Consulta
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL: AGREGAR REPUESTO -->
+    <div id="admin-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto">
+        <div class="bg-cardBg border border-slate-800 p-6 sm:p-8 rounded-2xl max-w-lg w-full relative shadow-2xl my-8">
+            <button onclick="closeAdminModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-white mb-1">Nuevo Repuesto</h3>
+            <p class="text-slate-400 text-sm mb-6">Completá los datos para cargar un repuesto al stock.</p>
+            
+            <form id="repuesto-form" onsubmit="handleAgregarRepuesto(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Nombre del Repuesto</label>
+                    <input type="text" id="rep-nombre" placeholder="Ej: Kit de Transmisión DID con O'ring" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Categoría</label>
+                        <select id="rep-categoria" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm">
+                            <option value="" disabled selected>Seleccioná una categoría</option>
+                            <option value="Motor">Motor</option>
+                            <option value="Tren Delantero">Tren Delantero</option>
+                            <option value="Tren Trasero">Tren Trasero</option>
+                            <option value="Transmisión">Transmisión</option>
+                            <option value="Frenos">Frenos</option>
+                            <option value="Electricidad">Electricidad</option>
+                            <option value="Plásticos y Carenados">Plásticos y Carenados</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Stock Disponible</label>
+                        <input type="number" id="rep-stock" min="0" value="1" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Precio ($ ARS)</label>
+                    <input type="text" id="rep-precio" placeholder="Ej: 45.000" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Descripción / Compatibilidad</label>
+                    <textarea id="rep-descripcion" rows="3" placeholder="Modelos compatibles, marca, medidas..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm"></textarea>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Imágenes del Repuesto</label>
+                    <div class="flex items-center gap-2 mb-2">
+                        <input type="file" id="rep-imagen-input" accept="image/*" multiple onchange="agregarArchivosNuevos(this)" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-slate-400 text-sm file:mr-4 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-accentRed file:text-white hover:file:bg-red-600">
+                    </div>
+                    
+                    <div id="drop-zone" ondragover="event.preventDefault(); this.classList.add('border-accentRed');" ondragleave="this.classList.remove('border-accentRed');" ondrop="manejarDropImagen(event)" class="border-2 border-dashed border-slate-700 hover:border-slate-500 rounded-xl p-4 text-center cursor-pointer transition-colors bg-slate-900/50">
+                        <p class="text-xs text-slate-400"><i class="fa-solid fa-cloud-arrow-up mr-1 text-accentYellow"></i> Arrastrá fotos aquí o pegalas con <span class="text-white font-bold">Ctrl + V</span></p>
+                    </div>
+
+                    <div id="vistas-previas-container" class="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-3"></div>
+                    
+                    <span class="text-[10px] text-slate-500 mt-2 block">Usá las flechas para ordenar, la estrella ⭐ para hacerla principal, o la X para borrar.</span>
+                </div>
+                <p id="form-error-msg" class="text-red-400 text-xs font-semibold hidden"><i class="fa-solid fa-circle-exclamation mr-1"></i> Por favor completá todos los campos requeridos.</p>
+                <button type="submit" class="w-full bg-accentRed hover:bg-red-600 text-white font-bold py-3 rounded-xl transition-colors text-sm">Guardar Repuesto</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- VISTA DE DETALLE DE PRODUCTO -->
+    <div id="detalle-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-darkBg/95 backdrop-blur-xl p-4 sm:p-6 lg:p-8 overflow-y-auto">
+        <div class="bg-cardBg border border-slate-800 rounded-3xl max-w-6xl w-full relative shadow-2xl overflow-hidden my-auto">
+            
+            <button onclick="closeDetalleModal()" class="absolute top-6 right-6 z-30 bg-slate-800/80 hover:bg-accentRed text-white px-4 py-2.5 rounded-full flex items-center gap-2 text-xs font-bold transition-colors shadow-lg border border-slate-700">
+                <i class="fa-solid fa-arrow-left"></i> Volver al Catálogo
+            </button>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-12 min-h-[550px]">
+                
+                <div class="lg:col-span-7 bg-slate-950 relative flex items-center justify-center p-6 lg:p-10 overflow-hidden border-b lg:border-b-0 lg:border-r border-slate-800">
+                    <img id="detalle-img" src="" alt="Repuesto" class="max-h-[450px] w-full object-contain drop-shadow-2xl">
+                    <span id="detalle-categoria" class="absolute top-6 left-6 z-20 bg-darkBg/90 backdrop-blur-md text-white text-xs font-semibold px-4 py-2 rounded-full border border-slate-700">Categoría</span>
+                    
+                    <div id="carrusel-controles" class="hidden absolute inset-x-6 top-1/2 -translate-y-1/2 flex justify-between items-center z-20 pointer-events-none">
+                        <button type="button" onclick="cambiarFoto(-1)" class="pointer-events-auto bg-black/70 hover:bg-black text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md transition-colors shadow-lg border border-slate-700 text-base">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button type="button" onclick="cambiarFoto(1)" class="pointer-events-auto bg-black/70 hover:bg-black text-white w-12 h-12 rounded-full flex items-center justify-center backdrop-blur-md transition-colors shadow-lg border border-slate-700 text-base">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div id="carrusel-indicador" class="hidden absolute bottom-6 left-1/2 -translate-x-1/2 z-20 bg-black/70 backdrop-blur-md text-white text-xs px-4 py-1.5 rounded-full border border-slate-700 font-bold">
+                        1 / 1
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 p-8 lg:p-10 flex flex-col justify-between space-y-8">
+                    <div class="space-y-4">
+                        <div id="detalle-stock-badge" class="inline-block text-xs font-semibold px-3 py-1 rounded-md">Stock</div>
+                        <h3 id="detalle-nombre" class="text-3xl font-black text-white leading-tight">Nombre del repuesto</h3>
+                        <p id="detalle-precio" class="text-3xl font-black text-accentYellow">$0.00</p>
+                        <hr class="border-slate-800 my-4">
+                        <div class="space-y-2">
+                            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Descripción / Compatibilidad</span>
+                            <p id="detalle-descripcion" class="text-slate-300 text-sm sm:text-base leading-relaxed whitespace-pre-line">Detalles del repuesto...</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-3 pt-4">
+                        <a id="detalle-whatsapp-btn" href="#" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-4 px-6 rounded-2xl transition-colors text-sm flex items-center justify-center gap-3 shadow-xl shadow-emerald-900/20">
+                            <i class="fa-brands fa-whatsapp text-xl"></i> Consultar disponibilidad por WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: EDITAR REPUESTO -->
+    <div id="edit-repuesto-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 overflow-y-auto">
+        <div class="bg-cardBg border border-slate-800 p-6 sm:p-8 rounded-2xl max-w-2xl w-full relative shadow-2xl my-8">
+            <button onclick="closeEditModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="text-2xl font-bold text-white mb-1">Editar Repuesto</h3>
+            <p class="text-slate-400 text-sm mb-6">Actualizá los datos o el stock disponible.</p>
+            
+            <form id="edit-repuesto-form" onsubmit="handleEditarRepuesto(event)" class="space-y-4">
+                <input type="hidden" id="edit-rep-id">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Nombre del Repuesto</label>
+                    <input type="text" id="edit-rep-nombre" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Categoría</label>
+                        <select id="edit-rep-categoria" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm">
+                            <option value="" disabled selected>Seleccioná una categoría</option>
+                            <option value="Motor">Motor</option>
+                            <option value="Tren Delantero">Tren Delantero</option>
+                            <option value="Tren Trasero">Tren Trasero</option>
+                            <option value="Transmisión">Transmisión</option>
+                            <option value="Frenos">Frenos</option>
+                            <option value="Electricidad">Electricidad</option>
+                            <option value="Plásticos y Carenados">Plásticos y Carenados</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Stock Disponible</label>
+                        <input type="number" id="edit-rep-stock" required min="0" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm">
+                    </div>
+                </div>
+                <div>
+                        <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Precio ($ ARS)</label>
+                        <input type="text" id="edit-rep-precio" required oninput="this.value = this.value.replace(/[^0-9.,]/g, '')" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1">Descripción</label>
+                    <textarea id="edit-rep-descripcion" rows="6" required class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-white focus:outline-none focus:border-accentRed text-sm"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-accentRed hover:bg-red-600 text-white font-bold py-3 rounded-xl transition-colors text-sm">Actualizar Repuesto</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: ELIMINAR REPUESTO -->
+    <div id="delete-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+        <div class="bg-cardBg border border-slate-800 p-6 rounded-2xl max-w-sm w-full relative shadow-2xl text-center space-y-4">
+            <input type="hidden" id="delete-rep-id">
+            <div class="w-12 h-12 bg-red-500/10 text-red-500 rounded-full flex items-center justify-center mx-auto text-xl">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white">¿Eliminar repuesto?</h3>
+            <p class="text-slate-400 text-xs">Esta acción no se puede deshacer y borrará el repuesto del stock.</p>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <button type="button" onclick="closeDeleteModal()" class="bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold py-2.5 rounded-xl text-xs transition-colors">Cancelar</button>
+                <button type="button" onclick="confirmarEliminarRepuesto()" class="bg-accentRed hover:bg-red-600 text-white font-semibold py-2.5 rounded-xl text-xs transition-colors">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: LOGIN DE ADMINISTRADOR -->
+    <div id="login-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4">
+        <div class="bg-cardBg border border-slate-800 p-6 sm:p-8 rounded-2xl max-w-md w-full relative shadow-2xl">
+            <button onclick="closeLoginModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            
+            <h3 class="text-2xl font-bold text-white mb-1">Panel de Dueño</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mb-6">Ingresá tus credenciales para administrar el sitio.</p>
+            
+            <form id="login-form" onsubmit="handleLoginAdmin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1.5">Correo Electrónico</label>
+                    <input type="email" id="login-email" required placeholder="correo@ejemplo.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-accentRed text-sm">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-400 uppercase mb-1.5">Contraseña</label>
+                    <div class="relative">
+                        <input type="password" id="login-password" required placeholder="••••••••" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 pr-12 text-white focus:outline-none focus:border-accentRed text-sm">
+                        <button type="button" onclick="toggleMostrarPassword()" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors focus:outline-none" title="Ver/Ocultar contraseña">
+                            <i id="eye-icon" class="fa-solid fa-eye text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <p id="login-error-msg" class="text-red-400 text-xs font-semibold hidden"><i class="fa-solid fa-circle-exclamation mr-1"></i> Credenciales incorrectas.</p>
+                
+                <button type="submit" class="w-full bg-accentRed hover:bg-red-600 text-accentYellow font-bold py-3.5 rounded-xl transition-colors text-sm shadow-lg shadow-accentRed/20">
+                    Ingresar al Sistema
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SDK de Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    
+    <!-- Vinculación del JavaScript principal -->
+    <script src="main.js"></script>
+</body>
+</html>
